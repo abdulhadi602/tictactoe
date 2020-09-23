@@ -13,17 +13,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 2
-  lastUpdatedAtString: 2020-09-23T16:32:23.969+00:00
+  lastUpdatedAtString: 2020-09-23T16:37:57.427+00:00
   initializedAtString: 2020-09-23T16:29:17.228+00:00
-  localBranches:
-  - name: Origin
-    tracking: origin/Origin
-  - name: Real
-    tracking: origin/Real
+  localBranches: []
   remoteBranches:
   - name: origin/Origin
-    tracking: '[None]'
-  - name: origin/Real
     tracking: '[None]'
   remotes:
   - name: origin
@@ -34,35 +28,17 @@ MonoBehaviour:
     function: 0
     token: 
   localConfigBranches:
-    keys:
-    - Origin
-    - Real
-    values:
-    - name: Origin
-      remote:
-        name: origin
-        url: https://github.com/abdulhadi602/tictactoe.git
-      trackingBranch: Origin
-    - name: Real
-      remote:
-        name: origin
-        url: https://github.com/abdulhadi602/tictactoe.git
-      trackingBranch: Real
+    keys: []
+    values: []
   remoteConfigBranches:
     keys:
     - origin
     subKeys:
     - Values:
       - Origin
-      - Real
     subKeyValues:
     - Values:
       - name: Origin
-        remote:
-          name: origin
-          url: https://github.com/abdulhadi602/tictactoe.git
-        trackingBranch: 
-      - name: Real
         remote:
           name: origin
           url: https://github.com/abdulhadi602/tictactoe.git
