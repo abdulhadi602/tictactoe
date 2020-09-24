@@ -10,17 +10,23 @@ public class Logic : MonoBehaviour
 
     // Start is called before the first frame update
     private GameObject X, O;
-    private int[,] Board;
+    private static int[,] Board;
     private static int MoveCounter;
+
     public GameObject manager;
     private Manager managerSC;
+
+    
     void Start()
     {
         Board = new int[3,3];
+
         X = Resources.Load("Prefabs/X") as GameObject;
         O = Resources.Load("Prefabs/O") as GameObject;
+
         MoveCounter = 0;
         managerSC = manager.GetComponent<Manager>();
+
     }
 
     public void Move(GameObject moveby,int i,int j)
@@ -31,7 +37,7 @@ public class Logic : MonoBehaviour
             if (moveby == X)
             {
                 Board[i, j] = +1;
-                if (CheckForWin(1))
+                if (CheckForWin(1, Board))
                 {
                     managerSC.GameOver(1);
                 }
@@ -39,7 +45,7 @@ public class Logic : MonoBehaviour
             else if (moveby == O)
             {
                 Board[i, j] = -1;
-                if (CheckForWin(-1))
+                if (CheckForWin(-1, Board))
                 {
                     managerSC.GameOver(-1);
                 }
@@ -51,7 +57,7 @@ public class Logic : MonoBehaviour
             if (moveby == X)
             {
                 Board[i, j] = +1;
-                if (CheckForWin(1))
+                if (CheckForWin(1, Board))
                 {
                     managerSC.GameOver(1);
                    
@@ -61,7 +67,7 @@ public class Logic : MonoBehaviour
             else if (moveby == O)
             {
                 Board[i, j] = -1;
-                if (CheckForWin(-1))
+                if (CheckForWin(-1, Board))
                 {
                     managerSC.GameOver(-1);
                 }
@@ -78,7 +84,7 @@ public class Logic : MonoBehaviour
         
     }
 
-    private bool CheckForWin(int moveby)
+    public bool CheckForWin(int moveby,int[,] Board)
     {
         if(Board[0,0]==moveby && Board[0,1]==moveby && Board[0, 2] == moveby)
         {
@@ -116,4 +122,9 @@ public class Logic : MonoBehaviour
             return false;
         }
     }
+    public int[,] getBoard()
+    {
+        return Board;
+    }
+
 }

@@ -7,10 +7,18 @@ public class Manager : MonoBehaviour
 {
     public TextMeshProUGUI Winner;
     public Canvas GridBtns;
+    public static availableModes gametype;
+
+    private static bool isModeSet;
     // Start is called before the first frame update
     void Start()
     {
-        
+        isModeSet = false;
+        if (!isModeSet)
+        {
+            isModeSet = true;
+            gametype = availableModes.Bot;
+        }
     }
     public void GameOver(int winner)
     {
@@ -28,7 +36,31 @@ public class Manager : MonoBehaviour
             Winner.SetText("tie");
         }
     }
+    public void isLocalMultiplayer()
+    {
+        gametype = availableModes.isLocalMultiplayer;
+        isModeSet = true;
+    }
+    public void isMultiplayer()
+    {
+        gametype = availableModes.Multiplayer;
+        isModeSet = true;
+    }
+    public void isBot()
+    {
+        gametype = availableModes.Bot;
+        isModeSet = true;
+    }
+    public void setMode(availableModes mode)
+    {
+        gametype = mode;
+    }
 
+    public availableModes getMode()
+    {
+        
+        return gametype;
+    }
    public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
