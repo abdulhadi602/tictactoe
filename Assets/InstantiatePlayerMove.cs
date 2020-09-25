@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class InstantiatePlayerMove : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,6 +13,7 @@ public class InstantiatePlayerMove : MonoBehaviour
 
     private AIcontroller aisc;
     private GameObject AI;
+
     void Start()
     {
         logicObj = GameObject.FindGameObjectWithTag("Logic");
@@ -28,8 +29,7 @@ public class InstantiatePlayerMove : MonoBehaviour
         aisc = AI.GetComponent<AIcontroller>();
 
 
-
-
+       
     }
     public void Create()
     {
@@ -62,12 +62,10 @@ public class InstantiatePlayerMove : MonoBehaviour
                     GameObject.Instantiate(O, transform.position, Quaternion.identity);
                     lastMove = O;
                     MovePiece();
-                }
-                else
-                {
-                    lastMove = X;
+                    
                     if (Manager.gametype.Equals(availableModes.Bot))
                     {
+                        lastMove = X;
                         GameObject obj = aisc.Calculatenextmove();
                         if (obj != null)
                         {
@@ -75,16 +73,17 @@ public class InstantiatePlayerMove : MonoBehaviour
                             obj.GetComponent<InstantiatePlayerMove>().MovePiece();
                         }
                     }
-                    else
-                    {
+                }
+                else
+                {
+                    lastMove = X;
+                  
                         GameObject.Instantiate(X, transform.position, Quaternion.identity);
                         MovePiece();                                           
-                    }
+                    
                     
                 }
-            }
-
-            
+            }          
         }
     }
     public void MovePiece()

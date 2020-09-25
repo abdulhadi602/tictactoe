@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class Logic : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class Logic : MonoBehaviour
     public GameObject manager;
     private Manager managerSC;
 
-    
+    public TextMeshProUGUI Turn;
     void Start()
     {
         Board = new int[3,3];
@@ -41,6 +41,10 @@ public class Logic : MonoBehaviour
                 {
                     managerSC.GameOver(1);
                 }
+                else
+                {
+                    Turn.SetText("O's turn");
+                }
             }
             else if (moveby == O)
             {
@@ -48,6 +52,10 @@ public class Logic : MonoBehaviour
                 if (CheckForWin(-1, Board))
                 {
                     managerSC.GameOver(-1);
+                }
+                else
+                {
+                    Turn.SetText("X's turn");
                 }
             }
         }
